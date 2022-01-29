@@ -63,10 +63,10 @@ const Home: NextPage = () => {
           <TransparentCard number={0} />
           <TransparentCard number={0} />
         </div>
-        <div className='w-full text-center font-medium pt-4'>
+        <div className='w-full text-center font-medium pt-2'>
         ... or <span className='text-blue-400'>Enter as Guest</span>
         </div>
-        <div className='w-full text-center font-medium pt-4 text-sm text-gray-400'>
+        <div className='w-full text-center font-medium pt-1 text-sm text-gray-400'>
         Copyright © 2021 Genshin Guru   
         </div>
       </div>
