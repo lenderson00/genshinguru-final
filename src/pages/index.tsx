@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -14,6 +15,9 @@ const Home: NextPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="w-full min-h-screen bg-gray-700 text-white overflow-hidden bg-gradient-to-br from-transparent to-gray-900">
+      <Head>
+        <title>Genshin Guru | Oficial</title>
+      </Head>
       <div className="max-w-7xl relative mx-auto py-10 px-8 space-y-4 ">
         <nav className='flex items-center justify-between'>
           <a href="#" className='text-2xl font-semibold'>Genshin Guru</a>
@@ -58,7 +62,7 @@ const Home: NextPage = () => {
             <Image src={Person} alt="avatar" />
           </div>
         </div>
-        <div className='flex flex-col lg:flex-row flex-1 gap-5 pt-10 space-x-4 items-center'>
+        <div className='flex flex-col lg:flex-row flex-1 gap-10 pt-10 lg:gap-5 items-center'>
           <TransparentCard number={0} />
           <TransparentCard number={0} />
           <TransparentCard number={0} />

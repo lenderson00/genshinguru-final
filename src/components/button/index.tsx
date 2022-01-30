@@ -24,10 +24,10 @@ export const Button: React.FC<ButtonElement> = ({content, ...props}) => {
   }
   return (
     
-    <button className="button-normal group" {...props}>
+    <button className="button-normal group text-white w-full" {...props}>
       {content}
       { props.span !== null ?
-        <span className={ "absolute bg-slate-900 py-3 px-6 shadow-2xl rounded-lg scale-0 transition-all duration-500 ease-in-out " + getSpanDirection() } >
+        <span className={ "absolute w-full bg-slate-900/80 backdrop-blur-xl py-3 px-6 shadow-2xl rounded-lg scale-0 transition-all duration-500 ease-in-out " + getSpanDirection() } >
           {props.span}
         </span> :
         <></>
