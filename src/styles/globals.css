@@ -135,6 +135,10 @@ a {
 		border: 0.5px solid rgba(255, 255, 255, 0.2);
 	}
 
+	.border-slim-hidden {
+		border: 0.5px solid rgba(255, 255, 255, 0.0);
+	}
+
 	.design-button {
 		@apply border-slim p-4 rounded-lg cursor-pointer transformers;
 		background: rgba(48, 69, 98, 0.3)

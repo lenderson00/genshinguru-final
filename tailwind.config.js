@@ -13,6 +13,9 @@ module.exports = {
           800: '#2A3E59'
         },
         
+      },
+      gridTemplateColumns: {
+        'avatar': '150px',
       }
     },
   },
