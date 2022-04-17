@@ -1,8 +1,11 @@
+const { color } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       color: {
@@ -12,12 +15,14 @@ module.exports = {
         gray: {
           800: '#2A3E59'
         },
-        
+        ...color
       },
       gridTemplateColumns: {
         'avatar': '150px',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
