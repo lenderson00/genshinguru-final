@@ -1,8 +1,10 @@
 import { DashboardLayout } from "../../components/layout/Dashboard"
 
 const DashboardMain = () => {
+  
+  
   return (
-    <DashboardLayout>
+    <DashboardLayout >
       Dashboard
     </DashboardLayout>
   )

@@ -1,108 +1,172 @@
-import { Button } from "../../components/button"
-import { DividerHorizontal } from "../../components/divider/DividerHorizontal"
-import { DividerVertical } from "../../components/divider/DividerVertical"
-import { IoLogoGoogle, IoLogoFacebook, IoLogoGithub } from 'react-icons/io5'
-import { Input } from "../../components/input"
-import Image from "next/image"
-import { useRouter } from 'next/router'
+import { LockClosedIcon } from '@heroicons/react/solid'
+import { GetServerSideProps } from 'next';
+import { parseCookies } from 'nookies';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import Logo from '../../components/Icons/Logo'
+import { ThemeToggle } from '../../components/ThemeToggle'
 
-import { TiArrowBack } from 'react-icons/ti'
 
-import Guru  from '../../assets/png/guru.png'
-import useWindowDimensions from "../../hooks/UseWindowDimension"
-import { SocialButton } from "../../components/button/SocialButton"
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  try {
+    const cookies = parseCookies(ctx);
+    
+    if(cookies['genshinguru.token']) {
+      throw new Error('User Authentication ')
+    }
+    
+    return {
+      props: {} as never,
+    };
+    
+  }
+  catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {} as never,
+    };
+  }
+}
+
+
 
 const Login: React.FC = () => {
-  const { width } = useWindowDimensions()
-  const router = useRouter()
-// lg:bg-gray-700  lg:bg-gradient-to-br lg:from-transparent lg:to-gray-900
+
+
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (input: any) => {
+    try {
+
+      console.log(input)
+
+      toast.success('Login realizado com sucesso');
+    } catch (error) {
+      const e = error as Error
+      
+      toast.error(e.message);
+    }
+  }
+
+  
   return (
-    <div 
-      className="relative w-full min-h-screen flex  overflow-hidden items-center bg-login lg:bg-center lg:bg-no-repeat lg:bg-cover bg-white"
-    >
-      <div className="absolute z-20 right-5 md:right-10 top-5 cursor-pointer p-3 bg-white rounded-full lg:shadow-xl" onClick={() => router.back()} >
-        <TiArrowBack size={30} color="#2A3E59"/>
-      </div>
-      <div  className="max-w-3xl w-full relative mx-auto py-10 lg:px-8 space-y-4 bg-white  lg:h-max lg:rounded-xl lg:shadow-2xl ">
-        <div className="relative max-w-96 w-full p-5  flex flex-col lg:flex-row gap-2">
-          <div className="lg:pr-5 flex flex-col w-full flex-1 gap-3 " >
-            <div className="text-slate-700">
-              <div className=""></div>
-              <h2 className="text-2xl font-bold">Login 🤙</h2>
-              <p>Lorem ipsum here too!</p>
-            </div>
-            <form action="" className=" flex flex-col gap-y-3 white">
-              <div>
-                <Input type={'text'} label="Email"/>
-                <Input type={'password'} label="Password"/>
-              </div>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="remember"
-                  id="remember"
-                  className="form-checkbox w-4 h-4 text-orange-500 bg-white rounded border border-gray-400  focus:ring-orange-500 cursor-pointer"
-                />
-                <label htmlFor="remember" className="pl-2 text-sm font-light text-gray-900">
-                  Remember me
-                </label>
-              </div>
-              <a href="#" className="text-sm text-sky-500 hover:text-sky-600"> Forgot password?</a>
+    <>
+      <div className="flex items-center w-full min-h-screen ">
 
-              
+        <div className="relative flex-1 w-full px-4 py-12 space-y-8 sm:px-6 lg:px-8">
+          <div className='max-w-md mx-auto'>
+            <div>
+              <Logo className='w-24 fill-orange-500 dark:fill-orange-400' />
+
+              <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">Sign in to your account</h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Or {' '}
+                <a href="#" className="font-medium text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-400 animated">
+                  start your 7-day free trial
+                </a>
+              </p>
             </div>
-            <Button content={"ENTER"} />
+
+            <form className="mt-4 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+              <input type="hidden" defaultValue="true" {...register('remember')} />
+              <div className="-space-y-px rounded-md shadow-sm ">
+                <div>
+                  <label htmlFor="email-address" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="email-address"
+                    {...register('email')}
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="relative block w-full px-3 py-2 font-semibold text-gray-900 placeholder-gray-500 bg-gray-100 border border-gray-300 rounded-none appearance-none dark:border-slate-400 dark:text-white dark:bg-slate-500 dark:placeholder:text-slate-300 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                    placeholder="Email address"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password" className="sr-only">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    {...register('password')}
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    className="relative block w-full px-3 py-2 font-semibold text-gray-900 placeholder-gray-500 bg-gray-100 border border-gray-300 rounded-none appearance-none dark:border-slate-400 dark:text-white dark:bg-slate-500 dark:placeholder:text-slate-300 rounded-b-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center ">
+                  <input
+                    id="remember-me"
+                    {...register('remember-me')}
+                    type="checkbox"
+                    className="w-4 h-4 text-orange-600 border-gray-300 rounded cursor-pointer dark:text-orange-400 animated focus:ring-orange-500 dark:focus:ring-orange-300"
+                  />
+                  <label htmlFor="remember-me" className="block ml-2 text-sm text-gray-900 cursor-pointer select-none dark:text-slate-100">
+                    Remember me
+                  </label>
+                </div>
+
+                <div className="text-sm">
+                  <a href="#" className="font-medium text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-400 animated">
+                    Forgot your password?
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 border border-transparent rounded-md animated group hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                >
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <LockClosedIcon className="w-5 h-5 text-orange-500 group-hover:text-orange-400" aria-hidden="true" />
+                  </span>
+                  Sign in
+                </button>
+              </div>
             </form>
-          </div>
-          { width === undefined ? '' : width < 1024 ?
-          <DividerHorizontal /> :
-          <DividerVertical text={"or"} />
-          }
-          <div className="lg:pl-5 flex-1 w-full in-front-of">
-            <div className="border border-gray-300 border-solid h-min rounded-full p-1 flex justify-between lg:hidden" >
-              <div className='w-8 h-8 flex items-center justify-center borde cursor-pointer '>
-                <IoLogoGoogle  size={'24px'} className="hover:fill-orange-500 transformers" />
-              
-              </div>
-              <div className='p-1 w-8 h-8 flex items-center justify-center cursor-pointer'>
-                <IoLogoFacebook size={'24px'} className="hover:fill-orange-500 transformers"/>
-              </div>
-              <div className='p-1 w-8 h-8 flex items-center justify-center cursor-pointer'>
-                <IoLogoGithub  size={'24px'}  className="hover:fill-orange-500 transformers" />
+
+            <div className='flex flex-col gap-2 mt-8 text-center divide-y'>
+              <h2>Ou entre com</h2>
+              <div className='flex justify-between pt-2'>
+                <div>
+                  Google
+                </div>
+                <div>
+                  Facebook
+                </div>
               </div>
             </div>
-
-            <div className="hidden  w-full h-full  lg:grid place-content-center gap-5">
-              <div>
-               <h1 className="text-xl font-bold text-center">
-                Connect with <br />
-                Social Account
-                </h1>
-                <p className="font-light text-slate-500 text-[.8rem]  text-center">Lorem ipsum dolor sit amet <br /> consectetur, elit. </p>
-              </div>
-              <div className="flex flex-col gap-1 w-full">
-                  <SocialButton channel="Google">
-                    <IoLogoGoogle size={18} className="hover:fill-orange-500 transformers" />
-                  </SocialButton>
-                  <SocialButton channel="Facebook">
-                    <IoLogoFacebook size={18} className="hover:fill-orange-500 transformers"/>
-                  </SocialButton>
-                  <SocialButton channel="Github">
-                    <IoLogoGithub size={18} className="hover:fill-orange-500 transformers" />
-                  </SocialButton>
-              </div>
-              
-
-            </div>
-          </div>
-          <div className="absolute max-w-xl -right-52 top-36 hidden lg:block z-0">
-            <Image src={Guru} alt="guru" />
           </div>
         </div>
+
+        <div className='hidden h-screen bg-orange-400 lg:block lg:w-1/2 '>
+
+        </div>
       </div>
-        
-    </div>
+
+      <div className='fixed bottom-0 right-0 mb-4 mr-4 '>
+        <button className='p-2 bg-gray-200 rounded-full cursor-pointer dark:bg-slate-700'>
+          <ThemeToggle />
+        </button>
+      </div>
+
+      
+      
+
+      
+      
+    </>
   )
 }
 

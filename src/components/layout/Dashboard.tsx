@@ -1,12 +1,7 @@
-import { DashboardHeader } from "../menu/dashboradHeader"
-import { Sidebar } from "./Sidebar"
-
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { ThemeToggle } from "../ThemeToggle"
-
-import { PaperClipIcon } from '@heroicons/react/solid'
 
 const user = {
   name: 'Tom Cook',
@@ -92,15 +87,15 @@ export const DashboardLayout: React.FC = ({ children }) => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg dark:bg-slate-800 ring-1 ring-black ring-opacity-5 focus:outline-none">
                           {userNavigation.map((item) => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
                                   href={item.href}
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
+                                    active ? 'bg-gray-100 dark:hover:bg-slate-900 font-bold aniamted' : '',
+                                    'block px-4 py-2 text-sm text-gray-700 dark:text-white'
                                   )}
                                 >
                                   {item.name}
@@ -186,7 +181,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
         </div>
       </header>
       
-      <main className="px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <main className="py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <Table />
       </main>
 
@@ -196,26 +191,26 @@ export const DashboardLayout: React.FC = ({ children }) => {
 
 export default function Table() {
   return (
-    <div className="overflow-hidden bg-white shadow dark:bg-gray-700 sm:rounded-lg">
+    <div className="overflow-hidden bg-white border shadow dark:bg-slate-700 sm:rounded-lg dark:border-slate-400">
       <div className="px-4 py-5 sm:px-6">
         <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-white ">Applicant Information</h3>
         <p className="max-w-2xl mt-1 text-sm text-gray-500 dark:text-gray-300 ">Personal details and application.</p>
       </div>
-      <div className="border-t border-gray-200 dark:border-gray-800 ">
+      <div className="border-t border-gray-200 dark:border-slate-400 ">
         <dl>
-          <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-600">
+          <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-slate-600">
             <dt className="text-sm font-medium text-gray-500 dark:text-white ">Full name</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-300">Margot Foster</dd>
           </div>
 
-          <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-500">
+          <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-slate-500">
             <dt className="text-sm font-medium text-gray-500 dark:text-white">Application for</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-300">Backend Developer</dd>
           </div>
         
-          <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-gray-600">
+          <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-slate-600">
             <dt className="text-sm font-medium text-gray-500 dark:text-white">About</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-300">
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-slate-300">
               Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
               qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
               pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
