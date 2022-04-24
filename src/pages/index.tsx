@@ -11,9 +11,7 @@ import { Header } from '../components/Header/Header'
 const menuItems = ['Home', 'Story', 'About']
 const activeMenu = 'Home'
 
-
 const Home: NextPage = () => {
-  
   return (
     <div className='relative '>
       <section className='sticky w-full min-h-screen text-white bg-gradient-to-b dark:from-slate-800 dark:to-gray-900 from-slate-50 to-slate-100 '>
@@ -26,7 +24,7 @@ const Home: NextPage = () => {
             Perfect your <br /> own <span className='text-orange-500'>RNG</span>
             </h1>
             <p className='text-slate-500 dark:text-slate-400'>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Commodi fuga exercitationem ut itaque ducimus
             eveniet natus doloribus obcaecati rerum assumenda
             quisquam alias dolorum nisi.
@@ -39,31 +37,28 @@ const Home: NextPage = () => {
                 GET STARTED
               </button>
             </div>
-           
+
           </div>
           <div className='absolute hidden max-w-lg top-8 right-16 lg:block'>
             <Image src={Person} alt="avatar" />
           </div>
         </div>
-        
+
         <Steps />
       </section>
 
       <section className='min-h-screen font-bold text-center bg-slate-100 dark:bg-gray-900 snap-x snap-mandatory'>
         Another Section
       </section>
-      
+
     </div>
-    
-    
+
   )
 }
 
 export default Home
 
-
-
-export const HomePage = () => {
+export const HomePage = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="w-full min-h-screen overflow-hidden text-white bg-gray-700 bg-gradient-to-br from-transparent to-gray-900">
@@ -76,8 +71,8 @@ export const HomePage = () => {
           <div className='flex-row hidden lg:flex gap-x-24'>
             <ul className='flex flex-row items-center text-lg font-medium tracking-wider gap-x-16'>
               {
-                menuItems.map (item => {
-                  return  <li key={item} className={activeMenu === item ? 'text-orange-500 group' : 'group'} >
+                menuItems.map(item => {
+                  return <li key={item} className={activeMenu === item ? 'text-orange-500 group' : 'group'} >
                             <Link href={item === 'Home' ? '' : item.toLowerCase()}>{item}</Link>
                             <div className="h-0.5 bg-orange-500 scale-x-0 group-hover:scale-100 transition-transform origin-left rounded-full duration-500"></div>
                           </li>
@@ -86,12 +81,12 @@ export const HomePage = () => {
             </ul>
             <Link href="/login" passHref>
               <a className='flex items-center text-lg font-medium tracking-wider'>
-                
+
                 <span className='ml-2'>Login</span>
               </a>
-              
+
             </Link>
-            
+
           </div>
           <div className='relative z-30 block lg:hidden design-button' onClick={() => setIsOpen(!isOpen)}>
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,7 +94,7 @@ export const HomePage = () => {
             </svg>
           </div>
         </nav>
-        
+
         <div className='flex flex-col items-center flex-1 gap-10 pt-10 lg:flex-row lg:gap-5'>
 
         </div>
@@ -112,4 +107,3 @@ export const HomePage = () => {
     </div>
   )
 }
-

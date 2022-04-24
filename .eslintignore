@@ -1,0 +1,8 @@
+.husky
+.vscode
+coverage
+requirements
+node_modules
+public
+jest.config.js
+next-env.d.ts

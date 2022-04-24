@@ -1,13 +1,13 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { ThemeToggle } from "../ThemeToggle"
+import { ThemeToggle } from '../ThemeToggle'
 
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
   imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
 }
 
 const navigation = [
@@ -15,16 +15,16 @@ const navigation = [
   { name: 'Team', href: '#', current: false },
   { name: 'Projects', href: '#', current: false },
   { name: 'Calendar', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false },
+  { name: 'Reports', href: '#', current: false }
 ]
 
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Sign out', href: '#' }
 ]
 
-function classNames(...classes: string[]) {
+function classNames (...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -67,7 +67,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
                       type="button"
                       className="text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
-                      <ThemeToggle />                     
+                      <ThemeToggle />
                     </button>
 
                     {/* Profile dropdown */}
@@ -113,11 +113,13 @@ export const DashboardLayout: React.FC = ({ children }) => {
                   {/* Mobile menu button */}
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-gray-800 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span className="sr-only">Open main menu</span>
-                    {open ? (
+                    {open
+                      ? (
                       <XIcon className="block w-6 h-6" aria-hidden="true" />
-                    ) : (
+                        )
+                      : (
                       <MenuIcon className="block w-6 h-6" aria-hidden="true" />
-                    )}
+                        )}
                   </Disclosure.Button>
                 </div>
               </div>
@@ -180,7 +182,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
           <h1 className="text-xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
         </div>
       </header>
-      
+
       <main className="py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <Table />
       </main>
@@ -189,7 +191,7 @@ export const DashboardLayout: React.FC = ({ children }) => {
   )
 }
 
-export default function Table() {
+export default function Table (): JSX.Element {
   return (
     <div className="overflow-hidden bg-white border shadow dark:bg-slate-700 sm:rounded-lg dark:border-slate-400">
       <div className="px-4 py-5 sm:px-6">
@@ -207,7 +209,7 @@ export default function Table() {
             <dt className="text-sm font-medium text-gray-500 dark:text-white">Application for</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-gray-300">Backend Developer</dd>
           </div>
-        
+
           <div className="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 dark:bg-slate-600">
             <dt className="text-sm font-medium text-gray-500 dark:text-white">About</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-slate-300">

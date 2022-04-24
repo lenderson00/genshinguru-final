@@ -1,57 +1,50 @@
 import { LockClosedIcon } from '@heroicons/react/solid'
-import { GetServerSideProps } from 'next';
-import { parseCookies } from 'nookies';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import { GetServerSideProps } from 'next'
+import { parseCookies } from 'nookies'
+import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import Logo from '../../components/Icons/Logo'
 import { ThemeToggle } from '../../components/ThemeToggle'
 
-
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
-    const cookies = parseCookies(ctx);
-    
-    if(cookies['genshinguru.token']) {
+    const cookies = parseCookies(ctx)
+
+    if (cookies['genshinguru.token']) {
       throw new Error('User Authentication ')
     }
-    
+
     return {
-      props: {} as never,
-    };
-    
-  }
-  catch (e) {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      props: {} as never
+    }
+  } catch (e) {
     return {
       redirect: {
         permanent: false,
-        destination: "/",
+        destination: '/'
       },
-      props: {} as never,
-    };
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      props: {} as never
+    }
   }
 }
 
-
-
 const Login: React.FC = () => {
+  const { register, handleSubmit } = useForm()
 
-
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = async (input: any) => {
+  const onSubmit = async (input: any): Promise<void> => {
     try {
-
       console.log(input)
 
-      toast.success('Login realizado com sucesso');
+      toast.success('Login realizado com sucesso')
     } catch (error) {
       const e = error as Error
-      
-      toast.error(e.message);
+
+      toast.error(e.message)
     }
   }
 
-  
   return (
     <>
       <div className="flex items-center w-full min-h-screen ">
@@ -161,11 +154,6 @@ const Login: React.FC = () => {
         </button>
       </div>
 
-      
-      
-
-      
-      
     </>
   )
 }

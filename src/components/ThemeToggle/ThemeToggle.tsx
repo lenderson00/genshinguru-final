@@ -67,9 +67,9 @@ export const ThemeToggle: React.FC = () => {
     <div className='p-2 cursor-pointer select-none rounded-xl' onClick={changeTheme}>
 
         {
-        setting === 'light' ? 
-        <SunIcon className="w-6 h-6" selected />: 
-        <MoonIcon className="w-6 h-6" selected />
+        setting === 'light'
+          ? <SunIcon className="w-6 h-6" selected />
+          : <MoonIcon className="w-6 h-6" selected />
         }
     </div>
   )

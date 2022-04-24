@@ -30,7 +30,7 @@ export const useTheme = (): UseThemeType => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    
+
     if (mediaQuery?.addEventListener) {
       mediaQuery.addEventListener('change', update)
     } else {
@@ -42,7 +42,7 @@ export const useTheme = (): UseThemeType => {
       const theme = localStorage.theme
       if (theme === 'light' || theme === 'dark') {
         setSetting(theme)
-      } 
+      }
     }
     window.addEventListener('storage', onStorage)
 

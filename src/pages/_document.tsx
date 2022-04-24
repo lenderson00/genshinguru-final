@@ -1,19 +1,12 @@
 import clsx from 'clsx'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-const FAVICON_VERSION = 3
-
-function v(href: string) {
-  return `${href}?v=${FAVICON_VERSION}`
-}
-
 class MyDocument extends Document {
-
-  render() {
+  render (): JSX.Element {
     return (
       <Html lang="pt-br" className="dark h-full bg-gray-100 [--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem]">
         <Head>
-          {/* 
+          {/*
           <link rel="apple-touch-icon" sizes="180x180" href={v('/favicons/apple-touch-icon.png')} />
           <link rel="icon" type="image/png" sizes="32x32" href={v('/favicons/favicon-32x32.png')} />
           <link rel="icon" type="image/png" sizes="16x16" href={v('/favicons/favicon-16x16.png')} />
@@ -26,7 +19,7 @@ class MyDocument extends Document {
           <meta name="msapplication-config" content={v('/favicons/browserconfig.xml')} />
           <meta name="theme-color" content="#ffffff" />
           */}
-          
+
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -37,13 +30,13 @@ class MyDocument extends Document {
                     document.documentElement.classList.remove('dark')
                   }
                 } catch (_) {}
-              `,
+              `
             }}
           />
         </Head>
         <body
           className={clsx('antialiased h-full text-slate-500 dark:text-slate-400', {
-            'bg-white dark:bg-slate-900': !this.props.dangerousAsPath.startsWith('/examples/'),
+            'bg-white dark:bg-slate-900': !this.props.dangerousAsPath.startsWith('/examples/')
           })}
         >
           <Main />

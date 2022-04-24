@@ -1,6 +1,6 @@
 import { SpeakerphoneIcon, XIcon } from '@heroicons/react/outline'
 
-export default function HeaderBanner() {
+export default function HeaderBanner (): JSX.Element {
   return (
     <div className="bg-orange-600 dark:bg-orange-800">
       <div className="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">

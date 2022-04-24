@@ -1,8 +1,6 @@
-import { DashboardLayout } from "../../components/layout/Dashboard"
+import { DashboardLayout } from '../../components/layout/Dashboard'
 
-const DashboardMain = () => {
-  
-  
+const DashboardMain = (): JSX.Element => {
   return (
     <DashboardLayout >
       Dashboard
